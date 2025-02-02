@@ -1,9 +1,5 @@
 # LCDNet: Deep Loop Closure Detection and Point Cloud Registration for LiDAR SLAM  (IEEE T-RO 2022)
 
-Official PyTorch implementation of LCDNet.
-
-[![](imgs/video-preview.png)](https://www.youtube.com/watch?v=nAvTdEFRh_s)
-
 ## Installation
 
 You can install LCDNet locally on your machine, or use the provided Dockerfile to run it in a container. The `environment_lcdnet.yml` file is meant to be used with docker, as it contains version of packages that are specific to a CUDA version. We don't recommend using it for local installation.
@@ -26,7 +22,7 @@ Tested in the following environments:
 #### Note
 We noticed that the RANSAC implementation in Open3D version >=0.15 achieves bad results. We tested our code with Open3D versions between 0.12.0 and 0.14.2, please use one of these versions, as results might be very different otherwise.
 
-We also noticed that spconv version 2.2 or higher is not compatible with the pretrained weights provided with this repository. Spconv version 2.1.25 or lower is required to properly load the pretrained model.
+Spconv version 2.2 or higher is not compatible with the pretrained weights provided with this repository. Spconv version 2.1.25 or lower is required to properly load the pretrained model.
 
 ### Docker
 
@@ -38,16 +34,6 @@ We also noticed that spconv version 2.2 or higher is not compatible with the pre
 7. Run the training or evaluation scripts (see [Training](#training) and [Evaluation](#evaluation) sections). The weights of the pretrained model are copied inside the container under ```/pretreined_models/LCDNet-kitti360.tar```.
 
 ## Preprocessing
-
-### KITTI
-
-Download the [SemanticKITTI](http://semantic-kitti.org/dataset.html#download) dataset and generate the loop ground truths:
-
-```python -m data_process.generate_loop_GT_KITTI --root_folder KITTI_ROOT```
-
-where KITTI_ROOT is the path where you downloaded and extracted the SemanticKITTI dataset.
-
-NOTE: although the semantic labels are not required to run LCDNet, we use the improved ground truth poses provided with the SemanticKITTI dataset.
 
 ### KITTI-360
 
@@ -112,30 +98,4 @@ To evaluate LCDNet (fast), remove the ```--ransac``` argument.
 
 A model pretrained on the KITTI-360 dataset can be found [here](https://drive.google.com/file/d/176dQn6QhFoolu3bcGvyGuBxaCQY42kNn/view?usp=sharing)
 
-## Paper
 
-"LCDNet: Deep Loop Closure Detection and Point Cloud Registration for LiDAR SLAM"
-* [IEEEXplore](https://ieeexplore.ieee.org/document/9723505)
-* [Arxiv](https://arxiv.org/abs/2103.05056)
-* [Video](https://www.youtube.com/watch?v=nAvTdEFRh_s)
-
-If you use LCDnet, please cite:
-```
-@ARTICLE{cattaneo2022tro,
-  author={Cattaneo, Daniele and Vaghi, Matteo and Valada, Abhinav},
-  journal={IEEE Transactions on Robotics}, 
-  title={LCDNet: Deep Loop Closure Detection and Point Cloud Registration for LiDAR SLAM}, 
-  year={2022},
-  volume={38},
-  number={4},
-  pages={2074-2093},
-  doi={10.1109/TRO.2022.3150683}
- }
-```
-
-## Contacts
-* [Daniele Cattaneo](https://rl.uni-freiburg.de/people/cattaneo)
-* [Abhinav Valada](https://rl.uni-freiburg.de/people/valada)
-
-## License
-For academic usage, the code is released under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) license. For any commercial purpose, please contact the authors.
