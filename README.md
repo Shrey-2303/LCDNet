@@ -1,4 +1,4 @@
-# LCDNet: Deep Loop Closure Detection and Point Cloud Registration for LiDAR SLAM  (IEEE T-RO 2022)
+# LCDNet: GCNN based Deep Loop Closure Detection for SLAM systems
 
 ## Installation
 
