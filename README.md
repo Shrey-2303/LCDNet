@@ -1,5 +1,11 @@
 # LCDNet: GCNN based Deep Loop Closure Detection for SLAM systems
 
+<p align="center">
+    <img src="utils/lcdnet_gif.gif" alt="alt text">
+</p>
+
+
+
 ## Installation
 
 You can install LCDNet locally on your machine, or use the provided Dockerfile to run it in a container. The `environment_lcdnet.yml` file is meant to be used with docker, as it contains version of packages that are specific to a CUDA version. We don't recommend using it for local installation.
