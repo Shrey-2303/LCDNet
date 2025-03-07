@@ -21,20 +21,6 @@ Tested in the following environments:
 * pytorch 1.8/1.9/1.10
 * Open3D 0.12.0/0.14.1
 
-#### :warning: Note
-We noticed that the RANSAC implementation in Open3D version >=0.15 achieves bad results. We tested our code with Open3D versions between 0.12.0 and 0.14.1, please use one of these versions, as results might be very different otherwise.
-
-Spconv version 2.2 or higher is not compatible with the pretrained weights provided with this repository. Spconv version 2.1.25 or lower is required to properly load the pretrained model.
-
-### Docker
-
-1. Install Docker and NVIDIA-Docker (see [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) for instructions)
-2. Download the pretrained model (see [Pretrained model](#pretrained-model) section) in the same folder as the Dockerfile
-3. Build the docker image ```docker build --tag lcdnet -f Dockerfile .```
-4. Run the docker container ```docker run --gpus all -it --rm -v KITTI_ROOT:/data/KITTI lcdnet```
-5. From inside the container, activate the anaconda environment ```conda activate lcdnet``` and change directory to the LCDNet folder ```cd LCDNet```
-7. Run the training or evaluation scripts (see [Training](#training) and [Evaluation](#evaluation) sections). The weights of the pretrained model are copied inside the container under ```/pretreined_models/LCDNet-kitti360.tar```.
-
 ## Preprocessing
 
 ### KITTI-360
@@ -68,7 +54,7 @@ To train on the KITTI-360 dataset:
 ```python -m training_KITTI_DDP --root_folder KITTI360_ROOT --dataset kitti360 --batch_size B --without_ground```
 
 To track the training progress using [Weights & Biases](https://wandb.ai/), add the argument ```--wandb```.
-The per-GPU batch size B must be at least 2, and a GPU with at least 8GB of RAM is required (12GB or more is preferred). In our experiments we used a batch size of 6 on 4 x 24GB GPUs, for a total batch size of 24.
+The per-GPU batch size B must be at least 2, and a GPU with at least 8GB of RAM is required (12GB or more is preferred).
 
 The network's weights will be saved in the folder ```./checkpoints``` (you can change this folder with the argument ```--checkpoints_dest```), inside a subfolder named with the starting date and time of the training (format ```%d-%m-%Y_%H-%M-%S```), for example: ```20-02-2022_16-38-24```
 
